@@ -4,8 +4,8 @@ import sqlite3, secrets, string, os, requests, time
 from datetime import datetime
 app = Flask(__name__)
 CORS(app)
-FINNHUB_KEY= db1rsc1r01qrufhdrflgdb1rsc1r01qrufhdrfm0
-OPENROUTER_KEY = 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
+FINNHUB_KEY= "db1rsc1r01qrufhdrflgdb1rsc1r01qrufhdrfm0"
+OPENROUTER_KEY = "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"
 
 def init_db():
     c = sqlite3.connect("licenses.db")
