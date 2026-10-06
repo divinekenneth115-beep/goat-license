@@ -1,21 +1,14 @@
 from flask import Flask, request, jsonify
 import time
 from datetime import datetime, timezone
-import os
-import requests
 
 app = Flask(__name__)
-
-VALID_KEYS = {
-  "GOAT-PRO-12345": "pro",
-  "GOAT-BEGINNER-6789": "beginner"
-}
-
+VALID_KEYS = {"GOAT-PRO-12345": "pro","GOAT-BEGINNER-6789": "beginner"}
 db = {}
 
 @app.route('/')
 def home():
-    return "GoatMaster API Live"
+    return "GoatMaster API is Live"
 
 @app.route('/check-key')
 def check():
@@ -31,7 +24,7 @@ def check():
     if u["today"]!= today:
         u["today"]=today
         u["count"]=0
-    if plan=="pro":
+    if plan == "pro":
         if now - u["last"] < 60:
             return jsonify(allowed=False, ai_allowed=True, plan=plan, status="Wait 60s"),429
         if u["count"] >= 35:
